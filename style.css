@@ -107,7 +107,7 @@ height: auto;
 }
 
 @media (max-width: 768px) {
-    .logo-cabeçalho { width: 60px; }
+    .logo-cabeçalho { width: 100px; }
     header { padding: 12px; }
     .logo-secao1 { width: 150px; }
     .sobre h1, .Contatos h1 { font-size: 2rem; }
