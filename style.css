@@ -102,5 +102,5 @@ header {
 @media (max-width: 360px) 
 /*celulares pequenos */{
     .logo-cabeçalho { width: 100px; }
-    .logo-secao1 { width: 100px; }
+    .logo-secao1 { width: 80px; }
 }
