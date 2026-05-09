@@ -91,7 +91,7 @@ header {
     .videos-container video:nth-child(1) { width: 100%; }
 }
 
-@media (max-width: 480px) 
+@media (max-width: 510px) 
 /*celulares normais*/{
     .logo-cabeçalho { width: 120px; }
     header { padding: 10px; }
@@ -99,7 +99,7 @@ header {
     .sobre h1, .Contatos h1 { font-size: 1.5rem; }
 }
 
-@media (max-width: 320px) 
+@media (max-width: 360px) 
 /*celulares pequenos */{
     .logo-cabeçalho { width: 40px; }
     .logo-secao1 { width: 100px; }
