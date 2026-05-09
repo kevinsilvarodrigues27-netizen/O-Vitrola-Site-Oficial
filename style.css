@@ -29,15 +29,15 @@ header {
     .logo-cabeçalho { width: 70px; } /* notebook */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     .logo-cabeçalho { width: 100px; } /* tablet */
 }
 
-@media (max-width: 480px) {
+@media (max-width: 520px) {
     .logo-cabeçalho { width: 120px; } /* celular */
 }
 
-@media (max-width: 320px) {
+@media (max-width: 380px) {
     .logo-cabeçalho { width: 40px; } /* celular pequeno */
 }
 
