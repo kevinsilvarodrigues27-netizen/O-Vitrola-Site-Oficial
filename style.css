@@ -25,22 +25,6 @@ header {
     height: auto;
 }
 
-@media (max-width: 1024px) {
-    .logo-cabeçalho { width: 70px; } /* notebook */
-}
-
-@media (max-width: 800px) {
-    .logo-cabeçalho { width: 100px; } /* tablet */
-}
-
-@media (max-width: 520px) {
-    .logo-cabeçalho { width: 120px; } /* celular */
-}
-
-@media (max-width: 380px) {
-    .logo-cabeçalho { width: 40px; } /* celular pequeno */
-}
-
 .secao {
     position: relative;
     width: 100%;
