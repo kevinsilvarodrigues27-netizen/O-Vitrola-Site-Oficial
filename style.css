@@ -21,7 +21,7 @@ header {
 }
 
 .logo-cabeçalho {
-    width: 180px;
+    width: 200px;
     height: auto;
 }
 
@@ -74,7 +74,7 @@ header {
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
 }
 
-@media (max-width: 1090px) {
+@media (max-width: 1024px) {
     .logo-cabeçalho { width: 70px; }
     header { padding: 15px; }
 }
