@@ -319,4 +319,66 @@ footer {
     .logo-secao1 { width: 200px; }
     header { padding: 20px; }
     .sobre h1, .Contatos h1 { font-size: 3rem; }
+    /* Celular - esconde por padrão */
+.header-mobile {
+    display: none;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-mobile-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-mobile-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-icone {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.nav-icone.ig {
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.nav-icone.wpp {
+    background: #25D366;
+}
+
+/* Celular */
+@media (max-width: 768px) {
+    .nav-links-left, .nav-links-right {
+        display: none !important;
+    }
+
+    .logo-cabeçalho {
+        display: none;
+    }
+
+    .hamburger {
+        display: none !important;
+    }
+
+    .header-mobile {
+        display: flex !important;
+    }
+
+    header {
+        justify-content: flex-start !important;
+        gap: 12px !important;
+        padding: 12px 16px !important;
+    }
+}
 }
