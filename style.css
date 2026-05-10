@@ -234,6 +234,19 @@ header {
     .rodape-texto,
     .rodape-credito {
         font-size: 11px;
+        color: rgba(255, 255, 255, 0.6);
+        text-align: center;
+    }
+
+    footer {
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .redes-sociais {
+        justify-content: center;
+        width: 100%;
     }
 }
 }
