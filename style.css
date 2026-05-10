@@ -216,11 +216,11 @@ header {
 .rodape-linha {
     width: 100%;
     height: 0.5px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.6);
 }
 
 .rodape-texto {
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 12px;
 }
 @media (max-width: 480px) {
