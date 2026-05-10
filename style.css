@@ -99,17 +99,17 @@ header {
 /* Celular */
 @media (max-width: 768px) {
     .nav-links-left, .nav-links-right {
-        display: none;
+        display: none !important;
     }
 
     .hamburger {
-        display: flex;
+        display: flex !important;
     }
 
     header {
-        justify-content: flex-start;
-        gap: 12px;
-        padding: 12px 16px;
+        justify-content: flex-start !important;
+        gap: 12px !important;
+        padding: 12px 16px !important;
     }
 }
 
