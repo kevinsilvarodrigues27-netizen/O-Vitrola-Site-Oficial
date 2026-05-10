@@ -303,7 +303,6 @@ footer {
 @media (min-width: 511px) {
     .logo-cabeçalho { width: 120px; }
     .logo-secao1 { width: 150px; }
-    header { padding: 15px; }
     .sobre h1, .Contatos h1 { font-size: 2rem; }
 }
 
