@@ -425,7 +425,7 @@ footer {
 .shows-lista {
     max-width: 900px;
     margin: 0 auto;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.8);
     border: 0.5px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     padding: 1rem;
