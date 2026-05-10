@@ -62,12 +62,18 @@ function observarCards() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 animarCards();
+            } else {
+                // quando sair da seção, reseta
+                const cards = document.querySelectorAll('.show-card');
+                const lista = document.querySelector('.shows-lista');
+                lista.classList.remove('visivel');
+                cards.forEach(c => c.classList.remove('visivel'));
             }
         });
     }, { threshold: 0.1 });
 
-    const lista = document.querySelector('.shows-lista');
-    if (lista) observer.observe(lista);
+    const secao2 = document.getElementById('secao2');
+    if (secao2) observer.observe(secao2);
 }
 
 function toggleMenu() {
