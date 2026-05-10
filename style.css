@@ -111,11 +111,11 @@ header {
     .videos-container video:nth-child(2),
     .videos-container video:nth-child(3) { display: none; }
     .videos-container video:nth-child(1) { width: 100%; }
-    .logo-splash { width: 200px; !important}
+    .logo-splash { width: 200px !important; }
 }
 
 @media (max-width: 480px) {
-    .logo-splash { width: 180px; !important}
+    .logo-splash { width: 180px !important; }
 }
 
 /* celular normal */
