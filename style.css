@@ -106,6 +106,85 @@ header {
     to { opacity: 0; }
 }
 
+/* RODAPÉ */
+footer {
+    background-color: #111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    gap: 16px;
+    width: 100%;
+}
+
+.rodape-siga {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+}
+
+.redes-sociais {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+}
+
+.icone-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+}
+
+.icone-bg {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+}
+
+.icone-bg:hover {
+    transform: scale(1.15);
+}
+
+.instagram {
+   
+}
+
+.whatsapp {
+  
+}
+
+.icone-label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 11px;
+}
+
+.rodape-linha {
+    width: 100%;
+    height: 0.5px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.rodape-texto {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+}
+
+.rodape-credito {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
+}
+
+.rodape-credito span {
+    color: rgba(255, 255, 255, 0.7);
+}
+
 /* celular mostra só 1 vídeo */
 @media (max-width: 768px) {
     .videos-container video:nth-child(2),
@@ -116,6 +195,7 @@ header {
 
 @media (max-width: 480px) {
     .logo-splash { width: 180px !important; }
+    .icone-bg { width: 40px; height: 40px; }
 }
 
 /* celular normal */
@@ -146,108 +226,4 @@ header {
     .logo-secao1 { width: 200px; }
     header { padding: 20px; }
     .sobre h1, .Contatos h1 { font-size: 3rem; }
- 
-    footer {
-    background-color: #111;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    gap: 16px;
-}
-.rodape-credito {
-    color: rgba(255, 255, 255, 0.3);
-    font-size: 12px;
-}
-
-.rodape-credito span {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-
-.rodape-siga {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 13px;
-}
-
-.redes-sociais {
-    display: flex;
-    gap: 24px;
-}
-
-.icone-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    text-decoration: none;
-}
-
-.icone-bg {
-    width: 48px !important;
-    height: 48px !important;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px !important;
-    color: white;
-    transition: transform 0.3s;
-}
-
-.icone-bg:hover {
-    transform: scale(1.15);
-}
-
-.instagram {
-    );
-}
-
-.whatsapp {
-    ;
-}
-
-.icone-label {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 11px;
-}
-
-.rodape-linha {
-    width: 100%;
-    height: 0.5px;
-    background: rgba(255, 255, 255, 0.6);
-}
-
-.rodape-texto {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 12px;
-}
-@media (max-width: 480px) {
-    .icone-bg {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-    }
-
-    .rodape-siga,
-    .rodape-texto,
-    .rodape-credito {
-        font-size: 11px !important;
-        color: rgba(255, 255, 255, 0.6) !important;
-        text-align: center !important;
-        display: block !important;
-    }
-
-    footer {
-        align-items: center !important;
-        text-align: center !important;
-        padding: 1.5rem !important;
-    }
-
-    .redes-sociais {
-        justify-content: center !important;
-        width: 100% !important;
-    }
-}
 }
