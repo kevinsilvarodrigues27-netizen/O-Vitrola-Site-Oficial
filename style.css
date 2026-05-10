@@ -70,15 +70,15 @@ header {
 .menu-mobile {
     display: none;
     flex-direction: column;
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 56px;
     left: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.95);
     padding: 16px;
     gap: 4px;
+    z-index: 9;
 }
-
 .menu-mobile.aberto {
     display: flex;
 }
