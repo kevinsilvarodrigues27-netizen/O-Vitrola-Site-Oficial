@@ -9,6 +9,15 @@ body {
 }
 
 header {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+header.header-escondido {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+header {
     position: fixed;
     top: 0;
     width: 100%;

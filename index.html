@@ -8,6 +8,23 @@
      <title>O Vitrola | Site Oficial</title>
 </head>
 <script>
+// Esconde/mostra cabeçalho na seção 2 (só no desktop)
+const headerObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        const header = document.querySelector('header');
+        if (window.innerWidth > 768) {
+            if (entry.isIntersecting) {
+                header.classList.add('header-escondido');
+            } else {
+                header.classList.remove('header-escondido');
+            }
+        }
+    });
+}, { threshold: 0.1 });
+
+const secao2 = document.getElementById('secao2');
+if (secao2) headerObserver.observe(secao2);
+
 const URL_PLANILHA = 'https://corsproxy.io/?' + encodeURIComponent('https://docs.google.com/spreadsheets/d/e/2PACX-1vSkXuDXyf2990CfQTV_1KYb2XiicHlCAZpK9YFtfffX9ruWNkLclKi7huTKtNx2t25i2hArhqSuC_XR/pub?gid=0&single=true&output=csv');
 
 fetch(URL_PLANILHA)
