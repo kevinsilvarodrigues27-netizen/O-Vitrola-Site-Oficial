@@ -364,8 +364,10 @@ footer {
     }
 
     .header-mobile-right {
-        display: flex !important;
-    }
+    display: none;
+    align-items: center;
+    gap: 10px;
+}
 
     .hamburger {
         display: flex !important;
