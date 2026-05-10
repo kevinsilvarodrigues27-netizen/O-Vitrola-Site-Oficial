@@ -340,6 +340,7 @@ footer {
     flex-direction: row !important;
     align-items: center;
     gap: 16px;
+    margin-left: auto !important;
 }
 
 .nav-icone {
@@ -365,12 +366,14 @@ footer {
         display: none !important;
     }
 
-    .header-mobile-right {
+     header {
         display: flex !important;
         flex-direction: row !important;
+        justify-content: space-between !important;
         align-items: center !important;
-        gap: 16px !important;
+        padding: 12px 16px !important;
     }
+
 
     .hamburger {
         display: flex !important;
