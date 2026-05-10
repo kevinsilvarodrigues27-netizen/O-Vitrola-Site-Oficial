@@ -9,10 +9,10 @@
 </head>
 <script>
 const URL_PLANILHA = 'https://corsproxy.io/?' + encodeURIComponent('https://docs.google.com/spreadsheets/d/e/2PACX-1vSkXuDXyf2990CfQTV_1KYb2XiicHlCAZpK9YFtfffX9ruWNkLclKi7huTKtNx2t25i2hArhqSuC_XR/pub?gid=0&single=true&output=csv');
+
 fetch(URL_PLANILHA)
     .then(r => r.text())
     .then(csv => {
-
         const linhas = csv.split('\n').slice(1);
         const lista = document.getElementById('shows-lista');
         lista.innerHTML = '';
@@ -20,21 +20,22 @@ fetch(URL_PLANILHA)
         linhas.forEach((linha, i) => {
             if (!linha.trim()) return;
             const [dia, mes, local, cidade, horario] = linha.split(',');
-            const delay = i * 0.15;
 
-            lista.innerHTML += `
-                <div class="show-card" style="transition-delay: ${delay}s">
-                    <div class="show-data">
-                        <p class="show-dia">${dia.trim()}</p>
-                        <p class="show-mes">${mes.trim()}</p>
-                    </div>
-                    <div class="show-info">
-                        <p class="show-local">${local.trim()}</p>
-                        <p class="show-cidade">${cidade.trim()}</p>
-                    </div>
-                    <p class="show-horario">${horario.trim()}</p>
+            const card = document.createElement('div');
+            card.className = 'show-card';
+            card.style.transitionDelay = `${i * 0.15}s`;
+            card.innerHTML = `
+                <div class="show-data">
+                    <p class="show-dia">${dia.trim()}</p>
+                    <p class="show-mes">${mes.trim()}</p>
                 </div>
+                <div class="show-info">
+                    <p class="show-local">${local.trim()}</p>
+                    <p class="show-cidade">${cidade.trim()}</p>
+                </div>
+                <p class="show-horario">${horario.trim()}</p>
             `;
+            lista.appendChild(card);
         });
 
         observarCards();
@@ -42,22 +43,17 @@ fetch(URL_PLANILHA)
     .catch(() => {
         document.getElementById('shows-lista').innerHTML = '<p class="agenda-carregando">erro ao carregar shows</p>';
     });
+
 function animarCards() {
     const cards = document.querySelectorAll('.show-card');
     const lista = document.querySelector('.shows-lista');
-    
-    // reseta tudo
-    cards.forEach(c => {
-        c.classList.remove('visivel');
-    });
-    lista.classList.remove('visivel');
 
-    // anima depois de um frame
+    lista.classList.remove('visivel');
+    cards.forEach(c => c.classList.remove('visivel'));
+
     setTimeout(() => {
         lista.classList.add('visivel');
-        cards.forEach(c => {
-            c.classList.add('visivel');
-        });
+        cards.forEach(c => c.classList.add('visivel'));
     }, 100);
 }
 
