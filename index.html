@@ -7,12 +7,40 @@
     <link rel="shortcut icon" href="Logo Red.png" type="image/x-icon">
      <title>O Vitrola | Site Oficial</title>
 </head>
+<script>
+        function toggleMenu() {
+            const menu = document.getElementById('menuMobile');
+            menu.classList.toggle('aberto');
+        }
+    </script>
+</body>
 <body >
     <div class="splash">
     <img src="Logo-imagem-inicio.png" alt="Logo O Vitrola" class="logo-splash">
 </div>
 <header>
-<img src="Logo Red.png" alt="Logo Vermelha o vitrola" class="logo-cabeçalho">
+    <nav class="nav-links-left">
+        <a href="#secao1" class="nav-link">Início</a>
+        <a href="#secao2" class="nav-link">Shows</a>
+    </nav>
+    <img src="Logo Red.png" alt="Logo O Vitrola" class="logo-cabeçalho">
+    <nav class="nav-links-right">
+        <a href="#secao3" class="nav-link">Sobre</a>
+        <a href="#secao4" class="nav-link">Contato</a>
+    </nav>
+
+    <!-- Menu hamburguer (celular) -->
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="menu-mobile" id="menuMobile">
+        <a href="#secao1" class="mobile-link" onclick="toggleMenu()">Início</a>
+        <a href="#secao2" class="mobile-link" onclick="toggleMenu()">Shows</a>
+        <a href="#secao3" class="mobile-link" onclick="toggleMenu()">Sobre</a>
+        <a href="#secao4" class="mobile-link" onclick="toggleMenu()">Contato</a>
+    </div>
 </header>
     <!--Seção 1-->
     <section class="secao" id="secao1">
