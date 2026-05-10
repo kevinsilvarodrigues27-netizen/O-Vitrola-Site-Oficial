@@ -126,8 +126,11 @@ footer {
 
 .redes-sociais {
     display: flex;
+    flex-direction: row;
     gap: 24px;
     justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .icone-link {
@@ -145,19 +148,22 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
     transition: transform 0.3s;
 }
 
 .icone-bg:hover {
     transform: scale(1.15);
 }
-
-.instagram {
-   
+.img-instagram {
+    width: 38px !important;
+    height: 38px !important;
+    display: block;
 }
-
-.whatsapp {
-  
+.icone-bg img {
+    width: 28px;
+    height: 28px;
+    display: block;
 }
 
 .icone-label {
