@@ -393,3 +393,108 @@ footer {
     .logo-cabeçalho { display: none !important; }
     .header-mobile-left { display: flex !important; }
 }
+
+.sobre {
+    width: 100%;
+    padding: 0 2rem;
+}
+
+.agenda-subtitulo {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.agenda-titulo {
+    text-align: center;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.agenda-carregando {
+    color: rgba(255, 255, 255, 0.4);
+    text-align: center;
+    font-size: 14px;
+}
+
+.shows-lista {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.4);
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1rem;
+    height: 450px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.show-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.show-card.visivel {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.show-data {
+    background: #c00;
+    border-radius: 8px;
+    padding: 8px 12px;
+    text-align: center;
+    min-width: 52px;
+}
+
+.show-dia {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.show-mes {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 11px;
+    margin: 0;
+}
+
+.show-info {
+    flex: 1;
+}
+
+.show-local {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.show-cidade {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+    margin: 4px 0 0;
+}
+
+.show-horario {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 13px;
+    margin: 0;
+}

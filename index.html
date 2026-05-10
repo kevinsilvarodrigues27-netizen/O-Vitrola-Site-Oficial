@@ -8,11 +8,59 @@
      <title>O Vitrola | Site Oficial</title>
 </head>
 <script>
-        function toggleMenu() {
-            const menu = document.getElementById('menuMobile');
-            menu.classList.toggle('aberto');
-        }
-    </script>
+const URL_PLANILHA = 'https://api.allorigins.win/raw?url=' + encodeURIComponent('https://docs.google.com/spreadsheets/d/e/2PACX-1vSkXuDXyf2990CfQTV_1KYb2XiicHlCAZpK9YFtfffX9ruWNkLclKi7huTKtNx2t25i2hArhqSuC_XR/pub?gid=0&single=true&output=csv');
+
+fetch(URL_PLANILHA)
+    .then(r => r.text())
+    .then(csv => {
+
+        const linhas = csv.split('\n').slice(1);
+        const lista = document.getElementById('shows-lista');
+        lista.innerHTML = '';
+
+        linhas.forEach((linha, i) => {
+            if (!linha.trim()) return;
+            const [dia, mes, local, cidade, horario] = linha.split(',');
+            const delay = i * 0.15;
+
+            lista.innerHTML += `
+                <div class="show-card" style="transition-delay: ${delay}s">
+                    <div class="show-data">
+                        <p class="show-dia">${dia.trim()}</p>
+                        <p class="show-mes">${mes.trim()}</p>
+                    </div>
+                    <div class="show-info">
+                        <p class="show-local">${local.trim()}</p>
+                        <p class="show-cidade">${cidade.trim()}</p>
+                    </div>
+                    <p class="show-horario">${horario.trim()}</p>
+                </div>
+            `;
+        });
+
+        observarCards();
+    })
+    .catch(() => {
+        document.getElementById('shows-lista').innerHTML = '<p class="agenda-carregando">erro ao carregar shows</p>';
+    });
+
+function observarCards() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visivel');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.show-card').forEach(card => observer.observe(card));
+}
+
+function toggleMenu() {
+    const menu = document.getElementById('menuMobile');
+    menu.classList.toggle('aberto');
+}
+</script>
 </body>
 <body >
     <div class="splash">
@@ -90,9 +138,13 @@
                 <source src="Video-Background/Video-Vitrola-2.3.mp4" type="video/mp4">
             </video>
         </div>
-        <div class="sobre">
-            <h1></h1>
-        </div>
+       <div class="sobre">
+    <p class="agenda-subtitulo">próximos</p>
+    <h2 class="agenda-titulo">shows</h2>
+    <div class="shows-lista" id="shows-lista">
+        <p class="agenda-carregando">carregando shows...</p>
+    </div>
+</div>
     </section>
 
     <!--Seção 3-->
