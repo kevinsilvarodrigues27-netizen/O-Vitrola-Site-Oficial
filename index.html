@@ -8,8 +8,7 @@
      <title>O Vitrola | Site Oficial</title>
 </head>
 <script>
-const URL_PLANILHA = 'https://api.allorigins.win/raw?url=' + encodeURIComponent('https://docs.google.com/spreadsheets/d/e/2PACX-1vSkXuDXyf2990CfQTV_1KYb2XiicHlCAZpK9YFtfffX9ruWNkLclKi7huTKtNx2t25i2hArhqSuC_XR/pub?gid=0&single=true&output=csv');
-
+const URL_PLANILHA = 'https://corsproxy.io/?' + encodeURIComponent('https://docs.google.com/spreadsheets/d/e/2PACX-1vSkXuDXyf2990CfQTV_1KYb2XiicHlCAZpK9YFtfffX9ruWNkLclKi7huTKtNx2t25i2hArhqSuC_XR/pub?gid=0&single=true&output=csv');
 fetch(URL_PLANILHA)
     .then(r => r.text())
     .then(csv => {
