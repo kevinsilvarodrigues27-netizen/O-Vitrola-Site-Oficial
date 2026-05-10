@@ -42,17 +42,36 @@ fetch(URL_PLANILHA)
     .catch(() => {
         document.getElementById('shows-lista').innerHTML = '<p class="agenda-carregando">erro ao carregar shows</p>';
     });
+function animarCards() {
+    const cards = document.querySelectorAll('.show-card');
+    const lista = document.querySelector('.shows-lista');
+    
+    // reseta tudo
+    cards.forEach(c => {
+        c.classList.remove('visivel');
+    });
+    lista.classList.remove('visivel');
+
+    // anima depois de um frame
+    setTimeout(() => {
+        lista.classList.add('visivel');
+        cards.forEach(c => {
+            c.classList.add('visivel');
+        });
+    }, 100);
+}
 
 function observarCards() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visivel');
+                animarCards();
             }
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.show-card').forEach(card => observer.observe(card));
+    const lista = document.querySelector('.shows-lista');
+    if (lista) observer.observe(lista);
 }
 
 function toggleMenu() {
@@ -140,7 +159,7 @@ function toggleMenu() {
         </div>
        <div class="sobre">
     <p class="agenda-subtitulo">próximos</p>
-    <h2 class="agenda-titulo">shows</h2>
+    <h2 class="agenda-titulo">SHOWS</h2>
     <div class="shows-lista" id="shows-lista">
         <p class="agenda-carregando">carregando shows...</p>
     </div>
