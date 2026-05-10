@@ -338,7 +338,7 @@ footer {
 .header-mobile-right {
     display: none;
     align-items: center;
-    gap: 10px;
+    gap: 1px;
 }
 
 .nav-icone {
@@ -367,7 +367,7 @@ footer {
     .header-mobile-right {
         display: flex !important;
         align-items: center;
-        gap: 10px;
+        gap: 16px;
     }
 
     .hamburger {
