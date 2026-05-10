@@ -375,8 +375,10 @@ footer {
     }
 
     header {
+        flex-direction: row !important;
         justify-content: space-between !important;
         padding: 12px 16px !important;
+        flex-wrap: nowrap !important;
     }
 }
 }
