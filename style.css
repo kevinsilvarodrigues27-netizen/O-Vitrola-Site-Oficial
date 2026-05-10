@@ -146,4 +146,94 @@ header {
     .logo-secao1 { width: 200px; }
     header { padding: 20px; }
     .sobre h1, .Contatos h1 { font-size: 3rem; }
+ 
+    footer {
+    background-color: #111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 16px;
+}
+.rodape-credito {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+}
+
+.rodape-credito span {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+
+.rodape-siga {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+}
+
+.redes-sociais {
+    display: flex;
+    gap: 24px;
+}
+
+.icone-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+}
+
+.icone-bg {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    transition: transform 0.3s;
+}
+
+.icone-bg:hover {
+    transform: scale(1.15);
+}
+
+.instagram {
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.whatsapp {
+    background-color: #25D366;
+}
+
+.icone-label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 11px;
+}
+
+.rodape-linha {
+    width: 100%;
+    height: 0.5px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.rodape-texto {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+}
+@media (max-width: 480px) {
+    .icone-bg {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .rodape-siga,
+    .rodape-texto,
+    .rodape-credito {
+        font-size: 11px;
+    }
+}
 }
