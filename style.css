@@ -317,6 +317,8 @@ footer {
 @media (min-width: 1025px) {
     .logo-cabeçalho { width: 180px; }
     .logo-secao1 { width: 200px; }
+   
+   
     header { padding: 20px; }
     .sobre h1, .Contatos h1 { font-size: 3rem; }
     /* Celular - esconde por padrão */
@@ -334,7 +336,7 @@ footer {
 }
 
 .header-mobile-right {
-    display: flex;
+    display: none;
     align-items: center;
     gap: 10px;
 }
@@ -357,17 +359,16 @@ footer {
     background: #25D366;
 }
 
-/* Celular */
 @media (max-width: 768px) {
     .nav-links-left, .nav-links-right {
         display: none !important;
     }
 
     .header-mobile-right {
-    display: none;
-    align-items: center;
-    gap: 10px;
-}
+        display: flex !important;
+        align-items: center;
+        gap: 10px;
+    }
 
     .hamburger {
         display: flex !important;
