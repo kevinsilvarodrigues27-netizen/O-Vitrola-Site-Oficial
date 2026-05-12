@@ -17,6 +17,28 @@ header.header-escondido {
     opacity: 0;
 }
 
+.img-shows {
+    position: absolute;
+    top: -75px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.3);
+    width: 350px;
+    height: auto;
+    z-index: 10;
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.img-shows.visivel {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+#secao2 {
+    overflow: visible;
+}
+
+
 header {
     position: fixed;
     top: 0;
@@ -404,6 +426,7 @@ footer {
 }
 
 .sobre {
+    position: relative;
     width: 100%;
     padding: 0 2rem;
 }
@@ -433,7 +456,7 @@ footer {
 
 .shows-lista {
     max-width: 900px;
-    margin: 0 auto;
+    margin: 220px auto 0 auto; /* top direita baixo esquerda */
     background: rgba(0, 0, 0, 0.8);
     border: 0.5px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;

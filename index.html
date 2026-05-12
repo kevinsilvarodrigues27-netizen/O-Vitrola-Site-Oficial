@@ -9,21 +9,35 @@
 </head>
 <script>
 // Esconde/mostra cabeçalho na seção 2 (só no desktop)
-const headerObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        const header = document.querySelector('header');
-        if (window.innerWidth > 768) {
-            if (entry.isIntersecting) {
-                header.classList.add('header-escondido');
-            } else {
-                header.classList.remove('header-escondido');
+document.addEventListener('DOMContentLoaded', () => {
+    const headerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const header = document.querySelector('header');
+            if (window.innerWidth > 768) {
+                if (entry.isIntersecting) {
+                    header.classList.add('header-escondido');
+                    // adiciona listener do mouse só na seção 2
+                    document.addEventListener('mousemove', mostrarHeaderTemporario);
+                } else {
+                    header.classList.remove('header-escondido');
+                    document.removeEventListener('mousemove', mostrarHeaderTemporario);
+                }
             }
-        }
-    });
-}, { threshold: 0.1 });
+        });
+    }, { threshold: 0.1 });
 
-const secao2 = document.getElementById('secao2');
-if (secao2) headerObserver.observe(secao2);
+    const secao2 = document.getElementById('secao2');
+    if (secao2) headerObserver.observe(secao2);
+});
+
+function mostrarHeaderTemporario(e) {
+    const header = document.querySelector('header');
+    if (e.clientY < 120) {
+        header.classList.remove('header-escondido');
+    } else {
+        header.classList.add('header-escondido');
+    }
+}
 
 const URL_PLANILHA = 'https://corsproxy.io/?' + encodeURIComponent('https://docs.google.com/spreadsheets/d/e/2PACX-1vSkXuDXyf2990CfQTV_1KYb2XiicHlCAZpK9YFtfffX9ruWNkLclKi7huTKtNx2t25i2hArhqSuC_XR/pub?gid=0&single=true&output=csv');
 
@@ -64,27 +78,35 @@ fetch(URL_PLANILHA)
 function animarCards() {
     const cards = document.querySelectorAll('.show-card');
     const lista = document.querySelector('.shows-lista');
+    const imgShows = document.querySelector('.img-shows');
 
     lista.classList.remove('visivel');
     cards.forEach(c => c.classList.remove('visivel'));
+    if (imgShows) imgShows.classList.remove('visivel');
 
     setTimeout(() => {
         lista.classList.add('visivel');
+        if (imgShows) imgShows.classList.add('visivel');
         cards.forEach(c => c.classList.add('visivel'));
-    }, 800);
+    }, 600);
 }
 
 function observarCards() {
+    let dentroSecao = false;
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
+            if (entry.isIntersecting && !dentroSecao) {
+                dentroSecao = true;
                 animarCards();
-            } else {
-                // quando sair da seção, reseta
+            } else if (!entry.isIntersecting) {
+                dentroSecao = false;
                 const cards = document.querySelectorAll('.show-card');
                 const lista = document.querySelector('.shows-lista');
+                const imgShows = document.querySelector('.img-shows');
                 lista.classList.remove('visivel');
                 cards.forEach(c => c.classList.remove('visivel'));
+                if (imgShows) imgShows.classList.remove('visivel');
             }
         });
     }, { threshold: 0.1 });
@@ -177,11 +199,11 @@ function toggleMenu() {
             </video>
         </div>
        <div class="sobre">
-    <p class="agenda-subtitulo">próximos</p>
-    <h2 class="agenda-titulo">SHOWS</h2>
+    <img src="proximos-shows.png" alt="priximos shows" class="img-shows">
     <div class="shows-lista" id="shows-lista">
         <p class="agenda-carregando">carregando shows...</p>
     </div>
+</div>
 </div>
     </section>
 
