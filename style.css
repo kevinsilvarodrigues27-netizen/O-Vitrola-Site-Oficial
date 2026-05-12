@@ -436,13 +436,13 @@ footer {
 }
 
 @media (min-width: 769px) {
-    .img-shows { width: 700px; top: -100px; }
+    .img-shows { width: 700px !important; top: -100px; }
     .logo-cabeçalho { width: 150px; }
     .logo-secao1 { width: 180px; }
 }
 
 @media (min-width: 1025px) {
-    .img-shows { width: 350px; top: -75px; }
+    .img-shows { width: 350px !important; top: -75px; }
     .logo-cabeçalho { width: 180px; }
     .logo-secao1 { width: 200px; }
     header { padding: 20px; }
