@@ -6,6 +6,7 @@
 
 body {
     background-color: #000;
+    font-family: 'Inter', sans-serif;
 }
 
 header {
@@ -141,7 +142,12 @@ header.header-escondido {
 }
 
 #secao2 {
+    height: auto;
+    min-height: 100vh;
     overflow: visible;
+    align-items: flex-start;
+    padding-top: 0;
+    padding-bottom: 4rem;
 }
 
 .videos-container {
@@ -170,7 +176,18 @@ header.header-escondido {
     height: auto;
 }
 
-.sobre, .Contatos {
+.sobre {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.Contatos {
     position: relative;
     z-index: 1;
     text-align: center;
@@ -210,22 +227,24 @@ header.header-escondido {
     to { opacity: 0; }
 }
 
-/* IMAGEM SHOWS */
+/* IMAGEM SHOWS
+   Agora usa position: relative + margin-top negativo
+   para subir de forma confiável em todos os tamanhos */
 .img-shows {
-    position: absolute;
-    top: -75px;
-    left: 50%;
-    transform: translateX(-50%) scale(0.3);
-    width: 350px;
+    position: relative;
+    left: auto;
     height: auto;
+    max-width: 100%;
     z-index: 10;
     opacity: 0;
+    /* width e margin-top definidos nos breakpoints */
     transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: scale(0.3);
 }
 
 .img-shows.visivel {
     opacity: 1;
-    transform: translateX(-50%) scale(1);
+    transform: scale(1);
 }
 
 /* AGENDA */
@@ -237,7 +256,7 @@ header.header-escondido {
 
 .shows-lista {
     max-width: 900px;
-    margin: 220px auto 0 auto;
+    margin: 0 auto 0 auto;
     background: rgba(0, 0, 0, 0.8);
     border: 0.5px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
@@ -407,8 +426,16 @@ footer {
     color: rgba(255, 255, 255, 0.7);
 }
 
-/* RESPONSIVO */
-@media (max-width: 768px) {
+/* ============================================
+   RESPONSIVO
+   Ajuste width e margin-top da .img-shows
+   e margin-top da .shows-lista em cada breakpoint.
+   margin-top negativo = sobe a imagem
+   margin-top da lista = espaço entre imagem e quadro
+   ============================================ */
+
+/* celular pequeno (até 480px) */
+@media (max-width: 480px) {
     .header-mobile-left { display: flex !important; }
     .logo-cabeçalho { display: none !important; }
     .nav-links-left, .nav-links-right { display: none !important; }
@@ -424,26 +451,58 @@ footer {
     .videos-container video:nth-child(2),
     .videos-container video:nth-child(3) { display: none; }
     .videos-container video:nth-child(1) { width: 100%; }
-    .logo-splash { width: 200px !important; }
-    .img-shows { width: 200px; top: -50px; }
-    .shows-lista { margin-top: 120px; height: 350px; }
-}
-
-@media (max-width: 480px) {
-    .logo-splash { width: 180px !important; }
+    .logo-splash { width: 180px; }
     .icone-bg { width: 40px; height: 40px; }
-    .img-shows { width: 160px; top: -40px; }
+    #secao2 { padding-top: 180px; }
+
+    /* ↓ margin-top negativo sobe a imagem, positivo desce */
+    .img-shows { width: 300px; margin-top: -100px; }
+    .shows-lista { margin-top: 20px; height: 350px; }
 }
 
-@media (min-width: 769px) {
-    .img-shows { width: 700px !important; top: -100px; }
+/* celular médio (481px até 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .header-mobile-left { display: flex !important; }
+    .logo-cabeçalho { display: none !important; }
+    .nav-links-left, .nav-links-right { display: none !important; }
+    .hamburger { display: flex !important; }
+    .header-mobile-right { display: flex !important; }
+    header {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 12px 16px !important;
+    }
+    .videos-container video:nth-child(2),
+    .videos-container video:nth-child(3) { display: none; }
+    .videos-container video:nth-child(1) { width: 100%; }
+    .logo-splash { width: 200px; }
+    #secao2 { padding-top: 220px; }
+
+    /* ↓ margin-top negativo sobe a imagem, positivo desce */
+    .img-shows { width: 400px; margin-top: -130px; }
+    .shows-lista { margin-top: 20px; height: 350px; }
+}
+
+/* tablet (769px até 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
     .logo-cabeçalho { width: 150px; }
     .logo-secao1 { width: 180px; }
+    #secao2 { padding-top: 280px; }
+
+    /* ↓ margin-top negativo sobe a imagem, positivo desce */
+    .img-shows { width: 500px; margin-top: -180px; }
+    .shows-lista { margin-top: 20px; }
 }
 
+/* desktop (1025px+) */
 @media (min-width: 1025px) {
-    .img-shows { width: 350px !important; top: -75px; }
     .logo-cabeçalho { width: 180px; }
     .logo-secao1 { width: 200px; }
     header { padding: 20px; }
+    #secao2 { padding-top: 320px; }
+
+    .img-shows { width: 400px; margin-top: -150px; }
+    .shows-lista { margin-top: 20px; height: 450px; }
 }
