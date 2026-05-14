@@ -34,6 +34,37 @@ header {
     transition: transform 0.5s ease, opacity 0.5s ease;
     box-shadow:
     0 0 40px rgba(255,0,0,0.06);
+    opacity: 0;
+
+    transform:
+    translateY(-20px);
+
+    transition:
+    opacity 1.2s ease,
+    transform 1.2s ease;
+}
+.scroll-indicator,
+.scroll-indicator::before,
+.scroll-indicator::after{
+
+    opacity:0;
+
+    transition:
+    opacity 1.5s ease,
+    transform 1.5s ease;
+}
+.scroll-indicator.aparecer,
+.scroll-indicator.aparecer::before,
+.scroll-indicator.aparecer::after{
+
+    opacity:1;
+}
+header.aparecer{
+
+    opacity: 1;
+
+    transform:
+    translateY(0);
 }
 
 header.header-escondido {
@@ -208,7 +239,7 @@ header.header-escondido {
     transform:
     translateY(0);
 }
-.scroll-indicador{
+.scroll-indicator{
     margin-top: 40px;
 
     color: rgba(255,255,255,0.3);
@@ -217,6 +248,7 @@ header.header-escondido {
 
     animation:
     scrollBounce 2s infinite;
+    
 }
 
 .nav-icone {
@@ -672,16 +704,14 @@ footer {
 
     max-width: 70vw;
 }
-    }
-
-.frase-home{
+    .frase-home{
     font-size: 10px;
     letter-spacing: 3px;
 
-    padding: 0 20px;
+    padding: 0 20px;}
 }
 
-.scroll-indicador{
+.scroll-indicator{
     margin-top: 24px;
     font-size: 18px;
 }
@@ -738,11 +768,10 @@ footer {
 
     width: 300px;
 }
-
-}
-
 .frase-home{
     font-size: 11px;
+}
+
 }
 
     /* ↓ margin-top negativo sobe a imagem, positivo desce */

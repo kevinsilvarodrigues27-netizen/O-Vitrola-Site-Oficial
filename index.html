@@ -80,7 +80,7 @@
         Nós somos a banda, O Vitrola, muito obrigado e fiquem todos com Deus!!!
     </p>
 
-    <div class="scroll-indicador">
+    <div class="scroll-indicator">
         ↓
     </div>
         </div>
@@ -258,7 +258,7 @@
             const menu = document.getElementById('menuMobile');
             menu.classList.toggle('aberto');
         }
-       window.addEventListener('load', () => {
+      window.addEventListener('load', () => {
 
     setTimeout(() => {
 
@@ -275,6 +275,22 @@
         .classList.add('aparecer');
 
     }, 3500);
+
+    setTimeout(() => {
+
+        document
+        .querySelector('header')
+        .classList.add('aparecer');
+
+    }, 4000);
+
+    setTimeout(() => {
+
+        document
+        .querySelector('.scroll-indicator')
+        .classList.add('aparecer');
+
+    }, 6800);
 
 });
     </script>
