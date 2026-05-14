@@ -181,6 +181,7 @@ header.header-escondido {
     0 0 15px rgba(255,0,0,0.8);
 }
 .frase-home{
+
     margin-top: 20px;
 
     color: rgba(255,255,255,0.5);
@@ -190,6 +191,22 @@ header.header-escondido {
     letter-spacing: 4px;
 
     text-transform: uppercase;
+
+    opacity: 0;
+
+    transform:
+    translateY(10px);
+
+    transition:
+    opacity 1.5s ease,
+    transform 1.5s ease;
+}
+.frase-home.aparecer{
+
+    opacity: 1;
+
+    transform:
+    translateY(0);
 }
 .scroll-indicador{
     margin-top: 40px;
