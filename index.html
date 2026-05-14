@@ -10,7 +10,6 @@
 </head>
 
 <body>
-    <div class="cursor-neon"></div>
     <div class="splash">
         <img src="Logo-imagem-inicio.png" alt="Logo O Vitrola" class="logo-splash">
     </div>
@@ -110,6 +109,75 @@
 
     <!-- Seção 3 -->
     <section class="secao" id="secao3">
+        <div class="integrantes-wrapper">
+
+    <img src="sobre-title.png" alt="Integrantes" class="titulo-integrantes">
+
+    <div class="carousel-container">
+
+        <button class="carousel-btn prev">‹</button>
+
+        <div class="carousel-track" id="carouselTrack">
+
+            <!-- CARD 1 -->
+            <div class="integrante-card">
+                <img src="integrantes/integrante1.jpg" alt="Integrante" class="integrante-foto">
+
+                <h3 class="integrante-nome">Pedro Iki</h3>
+
+                <p class="integrante-funcao">Vocal/Guitarra</p>
+
+                <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="integrante-instagram">
+                    @kevin
+                </a>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="integrante-card">
+                <img src="integrantes/integrante2.jpg" alt="Integrante" class="integrante-foto">
+
+                <h3 class="integrante-nome">Filipe</h3>
+
+                <p class="integrante-funcao">Bateria</p>
+
+                <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="integrante-instagram">
+                    @lucas
+                </a>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="integrante-card">
+                <img src="integrantes/integrante3.jpg" alt="Integrante" class="integrante-foto">
+
+                <h3 class="integrante-nome">Henrique</h3>
+
+                <p class="integrante-funcao">Baixo</p>
+
+                <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="integrante-instagram">
+                    @matheus
+                </a>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="integrante-card">
+                <img src="integrantes/integrante4.jpg" alt="Integrante" class="integrante-foto">
+
+                <h3 class="integrante-nome">Jéssica</h3>
+
+                <p class="integrante-funcao">Teclado</p>
+
+                <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="integrante-instagram">
+                    @joao
+                </a>
+            </div>
+
+        </div>
+
+        <button class="carousel-btn next">›</button>
+
+    </div>
+
+</div>
         <div class="videos-container">
             <video autoplay muted loop playsinline>
                 <source src="Video-Background/Video-vitrola-3.mp4" type="video/mp4">
@@ -294,59 +362,119 @@
     }, 6800);
 
 });
-/* CURSOR NEON SMOOTH */
 
-const cursor = document.querySelector('.cursor-neon');
+/* =========================================
+   CARROSSEL INFINITO
+========================================= */
 
-let mouseX = 0;
-let mouseY = 0;
+const track = document.getElementById('carouselTrack');
 
-let currentX = 0;
-let currentY = 0;
+const prevBtn = document.querySelector('.prev');
 
-/* pega posição real do mouse */
+const nextBtn = document.querySelector('.next');
 
-window.addEventListener('mousemove', (e) => {
+/* cards originais */
 
-    mouseX = e.clientX;
-
-    mouseY = e.clientY;
-
-});
-
-/* animação ultra suave */
-
-function animateCursor(){
-
-    currentX += (mouseX - currentX) * 0.8;
-    
-    currentY += (mouseY - currentY) * 0.8;
-
-    cursor.style.transform =
-    `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`;
-
-    requestAnimationFrame(animateCursor);
-}
-
-animateCursor();
-
-/* hover */
-
-const hoverElements = document.querySelectorAll(
-    'a, button, .show-card, .hamburger'
+const originalCards = Array.from(
+    document.querySelectorAll('.integrante-card')
 );
 
-hoverElements.forEach(el => {
+/* clona primeiros cards */
 
-    el.addEventListener('mouseenter', () => {
-        cursor.classList.add('hover');
-    });
+originalCards.forEach(card => {
 
-    el.addEventListener('mouseleave', () => {
-        cursor.classList.remove('hover');
-    });
+    const clone = card.cloneNode(true);
+
+    track.appendChild(clone);
 
 });
+
+let index = 0;
+
+function updateCarousel(animate = true){
+
+    const card = document.querySelector('.integrante-card');
+
+    const gap = 30;
+
+    const cardWidth = card.offsetWidth + gap;
+
+    if(!animate){
+        track.style.transition = 'none';
+    }else{
+        track.style.transition = 'transform 0.6s ease';
+    }
+
+    track.style.transform =
+    `translateX(-${index * cardWidth}px)`;
+}
+
+/* NEXT */
+
+function nextSlide(){
+
+    index++;
+
+    updateCarousel(true);
+
+    /* quando chega no clone */
+
+    if(index >= originalCards.length){
+
+        setTimeout(() => {
+
+            index = 0;
+
+            updateCarousel(false);
+
+        }, 600);
+    }
+}
+
+/* PREV */
+
+function prevSlide(){
+
+    if(index <= 0){
+
+        index = originalCards.length;
+
+        updateCarousel(false);
+
+        requestAnimationFrame(() => {
+
+            requestAnimationFrame(() => {
+
+                index--;
+
+                updateCarousel(true);
+
+            });
+
+        });
+
+    }else{
+
+        index--;
+
+        updateCarousel(true);
+
+    }
+}
+
+/* botões */
+
+nextBtn.addEventListener('click', nextSlide);
+
+prevBtn.addEventListener('click', prevSlide);
+
+/* autoplay */
+
+setInterval(nextSlide, 4000);
+
+/* inicia */
+
+updateCarousel(false);
     </script>
 </body>
 </html>
