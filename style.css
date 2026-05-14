@@ -143,6 +143,64 @@ header.header-escondido {
     width: 80px;
     height: auto;
 }
+.vinil{
+    width: 260px;
+    height: 260px;
+
+    border-radius: 50%;
+
+    border:
+    4px solid #ff1a1a;
+
+    box-shadow:
+    0 0 20px rgba(255,0,0,0.7),
+    inset 0 0 20px rgba(255,0,0,0.4);
+
+    animation:
+    girarVinil 10s linear infinite;
+}
+.vinil::before{
+    content:"";
+
+    position:absolute;
+
+    width:40px;
+    height:40px;
+
+    border-radius:50%;
+
+    background:#ff1a1a;
+
+    top:50%;
+    left:50%;
+
+    transform:
+    translate(-50%,-50%);
+
+    box-shadow:
+    0 0 15px rgba(255,0,0,0.8);
+}
+.frase-home{
+    margin-top: 20px;
+
+    color: rgba(255,255,255,0.5);
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+}
+.scroll-indicador{
+    margin-top: 40px;
+
+    color: rgba(255,255,255,0.3);
+
+    font-size: 22px;
+
+    animation:
+    scrollBounce 2s infinite;
+}
 
 .nav-icone {
     width: 32px;
@@ -203,8 +261,46 @@ header.header-escondido {
     position: relative;
     z-index: 1;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+.vinil-home{
 
+    width: 420px;
+    max-width: 85vw;
+
+    animation:
+    floatVinil 4s ease-in-out infinite alternate;
+
+    filter:
+    drop-shadow(0 0 12px rgba(255,0,0,0.8))
+    drop-shadow(0 0 35px rgba(255,0,0,0.35));
+
+    opacity: 0;
+
+    transform:
+    translateY(20px);
+
+    transition:
+    opacity 1.5s ease,
+    transform 1.5s ease;
+    filter:
+    drop-shadow(0 0 0px rgba(255,0,0,0));
+}
+.logo-inicio.visivel .vinil-home{
+    opacity: 1;
+}
+.vinil-home.aparecer{
+    opacity: 0.95;
+
+    transform:
+    translateY(0);
+    filter:
+drop-shadow(0 0 12px rgba(255,0,0,0.8))
+drop-shadow(0 0 35px rgba(255,0,0,0.35));
+}
 .logo-secao1 {
     width: 120px;
     height: auto;
@@ -552,7 +648,22 @@ footer {
     .logo-cabeçalho { display: none !important; }
     .nav-links-left, .nav-links-right { display: none !important; }
     .hamburger { display: flex !important; }
-    .header-mobile-right { display: flex !important; }
+    .header-mobile-right { display: flex !important; 
+    .vinil-home{
+        width: 260px;
+    }
+
+.frase-home{
+    font-size: 10px;
+    letter-spacing: 3px;
+
+    padding: 0 20px;
+}
+
+.scroll-indicador{
+    margin-top: 24px;
+    font-size: 18px;
+}}
     header {
         display: flex !important;
         flex-direction: row !important;
@@ -601,7 +712,18 @@ footer {
 @media (min-width: 769px) and (max-width: 1024px) {
     .logo-cabeçalho { width: 150px; }
     .logo-secao1 { width: 180px; }
-    #secao2 { padding-top: 280px; }
+    #secao2 { padding-top: 280px;
+    @media (min-width: 481px) and (max-width: 768px){
+
+    .vinil-home{
+        width: 320px;
+    }
+
+}
+
+.frase-home{
+    font-size: 11px;
+} }
 
     /* ↓ margin-top negativo sobe a imagem, positivo desce */
     .img-shows { width: 500px; margin-top: -180px; }
@@ -662,5 +784,25 @@ body::before{
 
     100%{
         transform: translate(0,0);
+    }
+}
+@keyframes scrollBounce{
+
+    0%,100%{
+        transform: translateY(0);
+    }
+
+    50%{
+        transform: translateY(8px);
+    }
+}
+@keyframes floatVinil{
+
+    from{
+        transform: translateY(0px);
+    }
+
+    to{
+        transform: translateY(-4px);
     }
 }

@@ -70,7 +70,20 @@
                 <source src="Video-Background/Video-Vitrola-1.3.mp4" type="video/mp4">
             </video>
         </div>
-        <div class="logo-inicio"></div>
+        <div class="logo-inicio">
+    <div class="vinil-container">
+        <img src="vinil-neon.png"
+        alt="Vinil Neon"
+        class="vinil-home">
+    </div>
+    <p class="frase-home">
+        Nós somos a banda, O Vitrola, muito obrigado e fiquem todos com Deus!!!
+    </p>
+
+    <div class="scroll-indicador">
+        ↓
+    </div>
+        </div>
     </section>
 
     <!-- Seção 2 -->
@@ -245,6 +258,17 @@
             const menu = document.getElementById('menuMobile');
             menu.classList.toggle('aberto');
         }
+        window.addEventListener('load', () => {
+
+    setTimeout(() => {
+
+        document
+        .querySelector('.vinil-home')
+        .classList.add('aparecer');
+
+    }, 3500);
+
+});
     </script>
 </body>
 </html>
