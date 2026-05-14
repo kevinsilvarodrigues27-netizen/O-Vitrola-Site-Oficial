@@ -258,7 +258,7 @@
             const menu = document.getElementById('menuMobile');
             menu.classList.toggle('aberto');
         }
-        window.addEventListener('load', () => {
+       window.addEventListener('load', () => {
 
     setTimeout(() => {
 
@@ -266,11 +266,15 @@
         .querySelector('.vinil-home')
         .classList.add('aparecer');
 
+    }, 3000);
+
+    setTimeout(() => {
+
         document
         .querySelector('.frase-home')
         .classList.add('aparecer');
 
-    }, 5000);
+    }, 3500);
 
 });
     </script>
