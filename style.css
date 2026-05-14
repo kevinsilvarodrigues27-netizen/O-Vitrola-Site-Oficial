@@ -648,9 +648,13 @@ footer {
     .logo-cabeçalho { display: none !important; }
     .nav-links-left, .nav-links-right { display: none !important; }
     .hamburger { display: flex !important; }
-    .header-mobile-right { display: flex !important; 
+    .header-mobile-right { display: flex !important;}
     .vinil-home{
-        width: 260px;
+
+    width: 220px;
+
+    max-width: 70vw;
+}
     }
 
 .frase-home{
@@ -712,12 +716,11 @@ footer {
 @media (min-width: 769px) and (max-width: 1024px) {
     .logo-cabeçalho { width: 150px; }
     .logo-secao1 { width: 180px; }
-    #secao2 { padding-top: 280px;
-    @media (min-width: 481px) and (max-width: 768px){
+    #secao2 { padding-top: 280px;}
+   .vinil-home{
 
-    .vinil-home{
-        width: 320px;
-    }
+    width: 300px;
+}
 
 }
 
