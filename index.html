@@ -121,53 +121,53 @@
 
             <!-- CARD 1 -->
             <div class="integrante-card">
-                <img src="integrantes/integrante1.jpg" alt="Integrante" class="integrante-foto">
+                <img src="Pedro-iki-perfil.jpg" alt="Integrante" class="integrante-foto">
 
                 <h3 class="integrante-nome">Pedro Iki</h3>
 
                 <p class="integrante-funcao">Vocal/Guitarra</p>
 
-                <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="integrante-instagram">
-                    @kevin
+                <a href="https://www.instagram.com/pedro.iki/" target="_blank" rel="noopener noreferrer" class="integrante-instagram">
+                    @pedro.iki
                 </a>
             </div>
 
             <!-- CARD 2 -->
             <div class="integrante-card">
-                <img src="integrantes/integrante2.jpg" alt="Integrante" class="integrante-foto">
+                <img src="Filipe-perfil.jpg" alt="Integrante" class="integrante-foto">
 
-                <h3 class="integrante-nome">Filipe</h3>
+                <h3 class="integrante-nome">Filipe Rocha</h3>
 
                 <p class="integrante-funcao">Bateria</p>
 
-                <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="integrante-instagram">
-                    @lucas
+                <a href="https://www.instagram.com/filiperochadrums/" target="_blank" rel="noopener noreferrer" class="integrante-instagram">
+                    @filiperochadrums
                 </a>
             </div>
 
             <!-- CARD 3 -->
             <div class="integrante-card">
-                <img src="integrantes/integrante3.jpg" alt="Integrante" class="integrante-foto">
+                <img src="Henrique-perfil.jpg" alt="Integrante" class="integrante-foto">
 
-                <h3 class="integrante-nome">Henrique</h3>
+                <h3 class="integrante-nome">Henrique Betel</h3>
 
                 <p class="integrante-funcao">Baixo</p>
 
-                <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="integrante-instagram">
-                    @matheus
+                <a href="https://www.instagram.com/henriquebetel/" target="_blank" rel="noopener noreferrer" class="integrante-instagram">
+                    @henriquebetel
                 </a>
             </div>
 
             <!-- CARD 4 -->
             <div class="integrante-card">
-                <img src="integrantes/integrante4.jpg" alt="Integrante" class="integrante-foto">
+                <img src="Jessica-perfil.jpg" alt="Integrante" class="integrante-foto">
 
-                <h3 class="integrante-nome">Jéssica</h3>
+                <h3 class="integrante-nome">Jéssica Barbosa</h3>
 
                 <p class="integrante-funcao">Teclado</p>
 
-                <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="integrante-instagram">
-                    @joao
+                <a href="https://www.instagram.com/jessica_obarbosa/" target="_blank" rel="noopener noreferrer" class="integrante-instagram">
+                    @jessica_obarbosa
                 </a>
             </div>
 
@@ -363,118 +363,90 @@
 
 });
 
-/* =========================================
-   CARROSSEL INFINITO
-========================================= */
-
 const track = document.getElementById('carouselTrack');
-
 const prevBtn = document.querySelector('.prev');
-
 const nextBtn = document.querySelector('.next');
 
-/* cards originais */
+const cards = Array.from(track.children);
 
-const originalCards = Array.from(
-    document.querySelectorAll('.integrante-card')
-);
-
-/* clona primeiros cards */
-
-originalCards.forEach(card => {
-
-    const clone = card.cloneNode(true);
-
-    track.appendChild(clone);
-
+/* duplica conteúdo uma vez */
+cards.forEach(card => {
+    track.appendChild(card.cloneNode(true));
 });
 
 let index = 0;
+let cardWidth = 0;
+let isAnimating = false;
 
-function updateCarousel(animate = true){
-
+function calculate() {
     const card = document.querySelector('.integrante-card');
-
     const gap = 30;
+    cardWidth = card.offsetWidth + gap;
+}
 
-    const cardWidth = card.offsetWidth + gap;
-
-    if(!animate){
-        track.style.transition = 'none';
-    }else{
-        track.style.transition = 'transform 0.6s ease';
-    }
-
-    track.style.transform =
-    `translateX(-${index * cardWidth}px)`;
+function move(animate = true) {
+    track.style.transition = animate ? 'transform 0.6s ease' : 'none';
+    track.style.transform = `translateX(-${index * cardWidth}px)`;
 }
 
 /* NEXT */
-
-function nextSlide(){
+function nextSlide() {
+    if (isAnimating) return;
+    isAnimating = true;
 
     index++;
-
-    updateCarousel(true);
-
-    /* quando chega no clone */
-
-    if(index >= originalCards.length){
-
-        setTimeout(() => {
-
-            index = 0;
-
-            updateCarousel(false);
-
-        }, 600);
-    }
+    move(true);
 }
 
 /* PREV */
+function prevSlide() {
+    if (isAnimating) return;
+    isAnimating = true;
 
-function prevSlide(){
-
-    if(index <= 0){
-
-        index = originalCards.length;
-
-        updateCarousel(false);
+    if (index <= 0) {
+        track.style.transition = 'none';
+        index = cards.length;
+        move(false);
 
         requestAnimationFrame(() => {
-
             requestAnimationFrame(() => {
-
                 index--;
-
-                updateCarousel(true);
-
+                move(true);
             });
-
         });
-
-    }else{
-
+    } else {
         index--;
-
-        updateCarousel(true);
-
+        move(true);
     }
 }
 
+/* núcleo do loop infinito perfeito */
+track.addEventListener('transitionend', () => {
+    const total = cards.length;
+
+    if (index >= total) {
+        track.style.transition = 'none';
+        index = 0;
+        move(false);
+    }
+
+    isAnimating = false;
+});
+
 /* botões */
-
 nextBtn.addEventListener('click', nextSlide);
-
 prevBtn.addEventListener('click', prevSlide);
 
 /* autoplay */
+setInterval(() => {
+    nextSlide();
+}, 4000);
 
-setInterval(nextSlide, 4000);
-
-/* inicia */
-
-updateCarousel(false);
+/* init */
+window.addEventListener('load', () => {
+    calculate();
+    move(false);
+});
     </script>
 </body>
 </html>
